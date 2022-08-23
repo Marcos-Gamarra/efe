@@ -27,9 +27,11 @@ local function efe_forward()
     local current_line = vim.api.nvim_get_current_line()
     local first_char = fn.getcharstr()
     local cursor_pos = vim.api.nvim_win_get_cursor(0)
+
     if (string.byte(first_char) == 27) then
         return
     end
+
     local second_char = fn.getcharstr()
     if (string.byte(second_char) == 32 and
         string.sub(current_line, #current_line) == first_char)
@@ -37,7 +39,13 @@ local function efe_forward()
         vim.api.nvim_win_set_cursor(0, {cursor_pos[1], #current_line - 1})
         return
     end
+
     local target = first_char .. second_char
+
+    if (first_char == '.') then
+        target = '\\' .. target
+    end
+
     vim.g.efePreviousTarget = target
     fn.search(target, '', cursor_pos[1])
 end

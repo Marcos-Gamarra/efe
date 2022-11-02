@@ -81,13 +81,13 @@ local function efe()
     )
     vim.keymap.set(
         { 'n', 'v', 'o' },
-        ';',
+        'S',
         ':lua require"efe".repeat_last_efe_forward()<CR>',
         { silent = true }
     )
     vim.keymap.set(
         { 'n', 'v', 'o' },
-        ',',
+        'H',
         ':lua require"efe".repeat_last_efe_backward()<CR>',
         { silent = true }
     )

@@ -5,7 +5,7 @@ vim.g.efePreviousTarget = ''
 
 --Repeats the last search in the forward direction.
 --the cursor_pos holds a table in which the first element is the number of the current line.
---this number is used to restrict the search to the current line the cursor is in.
+--this number is used to restrict the search to the line the cursor is currenly in.
 local function repeat_forward()
     local target = vim.g.efePreviousTarget
     local cursor_pos = vim.api.nvim_win_get_cursor(0)
